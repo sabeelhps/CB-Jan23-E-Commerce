@@ -20,6 +20,8 @@ services:
     image: mongo:latest
     ports:
       - "27017:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=${DB_NAME}
     volumes:
       - mongodb_data:/data/db
     networks:
