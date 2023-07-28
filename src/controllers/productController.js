@@ -4,6 +4,14 @@ const getAllProducts = async (req, res) => {
     const products = await productService.getAllProducts();
     res.render('products/index', { products });
 };
+const priceasc = async (req, res) => {
+    const products = await productService.priceasc();
+    res.render('products/index', { products });
+};
+const pricedsc = async (req, res) => {
+    const products = await productService.pricedsc();
+    res.render('products/index', { products });
+};
 
 const create = async (req, res) => {
     const product = {
@@ -29,4 +37,6 @@ module.exports = {
     getAllProducts,
     create,
     findById,
+    priceasc,
+    pricedsc,
 };

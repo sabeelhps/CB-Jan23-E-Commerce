@@ -2,6 +2,10 @@ const Product = require('../models/Product');
 
 const getAllProducts = () => Product.find({});
 
+const priceasc = () => Product.find({}).sort("price : 1");
+const pricedsc = () => Product.find({}).sort("price : 1");
+
+
 const save = (product) => {
     const newProduct = new Product(product);
     return newProduct.save();
@@ -17,4 +21,6 @@ module.exports = {
     getAllProducts,
     findById,
     findByIdWithReviews,
+    priceasc,
+    pricedsc,
 };
