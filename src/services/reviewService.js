@@ -14,6 +14,11 @@ const create = async (productId, review) => {
   return product;
 };
 
+const deleteReview = async (reviewId) => {
+  await reviewRepo.deleteReview(reviewId);
+};
+
 module.exports = {
   create,
+  deleteReview,
 };
