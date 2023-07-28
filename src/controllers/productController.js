@@ -19,8 +19,8 @@ const create = async (req, res) => {
     res.redirect('/api/v1/products');
 };
 
-const addProd = (req,res) => {
-    res.render('products/addProd');
+const showNewForm = (req,res) => {
+    res.render('products/showNewForm');
 }
 const findById = async (req, res) => {
     const { id } = req.params;
@@ -32,5 +32,5 @@ module.exports = {
     getAllProducts,
     create,
     findById,
-    addProd
+    showNewForm
 };

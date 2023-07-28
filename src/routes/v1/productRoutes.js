@@ -5,7 +5,7 @@ router.get('/', productController.getAllProducts);
 
 router.post('/',productController.create);
 
-router.get('/new',productController.addProd);
+router.get('/new',productController.showNewForm);
 
 router.get('/:id', productController.findById);
 
