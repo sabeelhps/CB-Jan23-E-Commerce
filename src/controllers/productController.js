@@ -16,9 +16,12 @@ const create = async (req, res) => {
     };
 
     const newProduct = await productService.create(product);
-    res.status(201).json(newProduct);
+    res.redirect('/api/v1/products');
 };
 
+const addProd = (req,res) => {
+    res.render('products/addProd');
+}
 const findById = async (req, res) => {
     const { id } = req.params;
     const product = await productService.findById(id);
@@ -29,4 +32,5 @@ module.exports = {
     getAllProducts,
     create,
     findById,
+    addProd
 };
