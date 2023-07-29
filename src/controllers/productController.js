@@ -19,6 +19,16 @@ const create = async (req, res) => {
     res.redirect('/api/v1/products');
 };
 
+const deleteProduct =  async (req, res) => {
+    const { id } = req.params;
+    try {
+      await productService.deleteProductAndReviews(id);
+      res.redirect('/api/v1/products'); 
+    } catch (error) {
+      res.status(500).send('Error deleting product and its reviews.');
+    }
+  };
+
 const showNewForm = (req,res) => {
     res.render('products/showNewForm');
 }
@@ -32,5 +42,6 @@ module.exports = {
     getAllProducts,
     create,
     findById,
-    showNewForm
+    showNewForm,
+    deleteProduct
 };

@@ -5,6 +5,8 @@ router.get('/', productController.getAllProducts);
 
 router.post('/',productController.create);
 
+router.delete('/:id', productController.deleteProduct);
+
 router.get('/new',productController.showNewForm);
 
 router.get('/:id', productController.findById);
