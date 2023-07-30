@@ -13,13 +13,17 @@
     transition: color 0.3s;
   }
   .heart-icon:hover {
+ 
   color: red;
+  transform: scale(1.09); 
+  z-index: 1000; 
+  position: absolute;
 }
 .card-style {
   transition: transform 0.3s ease;
 }
 
-.card:hover {
+.card-hover:hover {
     transform: scale(1.05); 
     z-index: 999; 
     position: absolute;

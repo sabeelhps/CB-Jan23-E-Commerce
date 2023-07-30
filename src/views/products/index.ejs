@@ -4,9 +4,9 @@
 <section class="row">
     <% for(const product of products){ %>
         <div class="col-lg-3 col-md-6 card-style" >
-            <div class="card mb-3 cardd-body" style="width: 20rem;">
+            <div class="card mb-3   card-hover" style="width: 20rem;">
                 <span class="heart-icon"> <i class="bi bi-heart-fill "></i></span>
-                <img src="<%=product.imageUrl%>"  class="card-img-top " alt="<%=product.name%>"   >
+                <img src="<%=product.imageUrl%>"  class="card-img-top border border-bottom-0" alt="<%=product.name%>"   >
             
                 <div class="card-body">
                   <h5 class="card-title d-flex justify-content-between text-capitalize"><%=product.name%> <span style="height: 22px;  width: 50px;"  class="me-2 bg-success text-warning fs-6 text-center " ><%=product.rating%><i class="bi bi-star-fill"></i></span></h5>
