@@ -7,7 +7,7 @@ const save = (review) => {
 
 const deleteReview = async (reviewId) => {
     const review = await Review.findById(reviewId);
-    review.deleteOne();
+    return review.deleteOne();
 };
 
 module.exports = {

@@ -13,7 +13,10 @@ const reviewSchema = new mongoose.Schema(
             type: String,
         },
     },
-    { timestamps: true, versionKey: false },
+    {
+        timestamps: true,
+        versionKey: false,
+    },
 );
 
 // pre-hook on remove : when review is deleted then it should be removed from product
@@ -23,12 +26,13 @@ reviewSchema.pre(
     { document: true, query: false },
     async function (next) {
         const product = await Product.findOne({ reviews: this._id });
-        // console.log(`product : \n ${product}`);
-        product.rating = (product.rating * product.reviews.length - this.rating)
-      / (product.reviews.length - 1);
+        // product.rating =
+        //   (product.rating * product.reviews.length - this.rating) /
+        //   (product.reviews.length - 1);
         product.reviews = product.reviews.filter(
             (review) => !review._id.equals(this._id),
         );
+        product.setAverageRating();
         product.save();
         next();
     },

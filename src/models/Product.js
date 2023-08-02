@@ -1,19 +1,31 @@
 const mongoose = require('mongoose');
 
-const productSchema = new mongoose.Schema({
-    name: String,
-    price: Number,
-    desc: String,
-    imageUrl: String,
-    quantity: Number,
-    rating: Number,
-    reviews: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Review',
+const productSchema = new mongoose.Schema(
+    {
+        name: String,
+        price: Number,
+        desc: String,
+        imageUrl: String,
+        quantity: Number,
+        rating: Number,
+        reviews: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Review',
+            },
+        ],
+    },
+    {
+        versionKey: false,
+        timestamps: true,
+        methods: {
+            setAverageRating() {
+                this.rating = this.reviews.map((review) => review.rating).reduce((a, b) => a + b)
+          / this.reviews.length;
+            },
         },
-    ],
-}, { versionKey: false, timestamps: true });
+    },
+);
 
 const Product = mongoose.model('Product', productSchema);
 
