@@ -16,4 +16,9 @@ app.use(express.urlencoded({ limit: '10mb', extended: true, parameterLimit: 5000
 app.use(healthcheckRoutes);
 app.use('/api/v1', v1Routes);
 
+app.use((err, req, res, next) => {
+    const { status = 500, message = 'Something went wrong. Try again after sometime' } = err;
+    res.status(status).render('error', { message });
+});
+
 module.exports = app;
