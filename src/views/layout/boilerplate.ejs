@@ -22,7 +22,7 @@
                     <a class="nav-link" href="/api/v1/products">Products</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">New</a>
+                    <a class="nav-link" href="/api/v1/products/new">New</a>
                   </li>
                 </ul>
                 <form class="d-flex" role="search">
@@ -35,6 +35,19 @@
     </header>
 
     <main class="container mt-4">
+      <% if(success && success.length){ %>
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <%=success%>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+      <% } %>
+      
+      <% if(error && error.length){ %>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <%=error%>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+      <% } %>
         <%- body -%>
     </main>
    
