@@ -5,6 +5,12 @@ const save = (review) => {
     return newReview.save();
 };
 
+const deleteReview = async (reviewId) => {
+    const review = await Review.findById(reviewId);
+    return review.deleteOne();
+};
+
 module.exports = {
     save,
+    deleteReview,
 };

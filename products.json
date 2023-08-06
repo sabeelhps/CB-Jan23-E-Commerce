@@ -1,0 +1,42 @@
+[
+  {
+    "name": "24 inch monitor",
+    "price": 20000,
+    "desc": "A good 24 inches quad HDTV monitor which can be used as secondary monitor with laptop",
+    "imageUrl": "https://images.unsplash.com/photo-1545665277-5937489579f2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+    "quantity": 1,
+    "ratings": 0
+  },
+  {
+    "name": "catan",
+    "price": 7000,
+    "desc": "A very fun, strategy board game where time gets dilated",
+    "imageUrl": "https://images.unsplash.com/photo-1606733847546-db8546099013?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3372&q=80",
+    "quantity": 1,
+    "ratings": 0
+  },
+  {
+    "name": "poker",
+    "price": 5000,
+    "desc": "Famous card game where biggest liar wins",
+    "imageUrl": "https://images.unsplash.com/photo-1617013371588-dfe4246161a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2012&q=80",
+    "quantity": 1,
+    "ratings": 0
+  },
+  {
+    "name": "ipad pro",
+    "price": 100000,
+    "desc": "Best piece of electronics in the world",
+    "imageUrl": "https://images.unsplash.com/photo-1585770536735-27993a080586?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1035&q=80",
+    "quantity": 1,
+    "ratings": 0
+  },
+  {
+    "name": "ANC bluetooth headphones",
+    "price": 10000,
+    "desc": "Wireless hands-free bluetooth ANC headphones",
+    "imageUrl": "https://images.unsplash.com/photo-1579065560489-989b0cc394ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3146&q=80",
+    "quantity": 1,
+    "ratings": 0
+  }
+]
