@@ -52,13 +52,40 @@
               <button class="btn btn-outline-success" type="submit">
                 Search
               </button>
-            </form>
-          </div>
-        </div>
-      </nav>
+              <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link" href="/api/v1/products">Products</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/api/v1/products/new">New</a>
+                  </li>
+                </ul>
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+          </nav>
     </header>
 
-    <main class="container mt-4"><%- body -%></main>
+    <main class="container mt-4">
+      <% if(success && success.length){ %>
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <%=success%>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+      <% } %>
+
+      <% if(error && error.length){ %>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <%=error%>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+      <% } %>
+        <%- body -%>
+    </main>
 
     <footer></footer>
     <script
