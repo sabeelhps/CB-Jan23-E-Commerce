@@ -1,14 +1,17 @@
-const express = require('express');
+const express = require("express");
+
 const router = express.Router();
-const productController = require('../../controllers/productController');
-router.get('/', productController.getAllProducts);
+const productController = require("../../controllers/productController");
+const catchAsync = require("../../core/catchAsync");
 
-router.post('/',productController.create);
+router.get("/", catchAsync(productController.getAllProducts));
 
-router.delete('/:id', productController.deleteProduct);
+router.post("/", catchAsync(productController.create));
 
-router.get('/new',productController.showNewForm);
+router.delete("/:id", productController.deleteProduct);
 
-router.get('/:id', productController.findById);
+router.get("/new", productController.showNewForm);
+
+router.get("/:id", catchAsync(productController.findById));
 
 module.exports = router;
