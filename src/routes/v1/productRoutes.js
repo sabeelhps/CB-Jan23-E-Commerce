@@ -3,7 +3,6 @@ const express = require('express');
 const router = express.Router();
 const productController = require('../../controllers/productController');
 
-const cloudinary = require("../../utils/cloudinary");
 const upload = require("../../utils/multer");
   
 router.get('/', productController.getAllProducts);

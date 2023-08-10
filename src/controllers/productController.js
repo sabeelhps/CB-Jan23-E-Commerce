@@ -12,9 +12,10 @@ const getAllProducts = async (req, res) => {
 
 const create = async (req, res) => {
   try{
+    console.log(req.file);
     const result = await cloudinary.uploader.upload(req.file.path);
 
-  
+  console.log(result);
 
   const product = new Product({
     name: req.body.name,
@@ -23,35 +24,21 @@ const create = async (req, res) => {
     rating: req.body.rating,
     desc: req.body.desc,
     quantity: req.body.quantity,
-    cloudinary_id: result.public_id,
+    cloudinaryId: result.public_id,
   });
 
   const newProduct = await productService.create(product);
-  res.status(200).send({
-    newProduct
-  });
+  res.redirect('/api/v1/products');
 }catch(err){
   console.log(err);
 }
 
-
-  //  const product = {
-  //       name: req.body.name,
-  //       price: req.body.price,
-  //       desc: req.body.desc,
-  //       imageUrl: result,
-  //       quantity: req.body.quantity,
-  //       rating: req.body.rating,
-  //   };
-
-    // const newProduct = await productService.create(product);
-    // res.redirect('/api/v1/products');
 };
 
  
 
 const addProduct = (req,res)=>{
-    res.render('products/addProd');
+    res.render('products/showNewForm');
 }
 
 const findById = async (req, res) => {
