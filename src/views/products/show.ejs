@@ -3,6 +3,7 @@
 <div class="row">
     <div class="col-lg-6">
         <div class="col-lg-4">
+
             <div class="card mx-auto mb-3" style="width: 22rem;">
                 <span class="heart-icon"> <i class="bi bi-heart-fill "></i></span>
                 <img src="<%=product.imageUrl%>" class="card-img-top" alt="<%=product.name%>">
@@ -10,6 +11,7 @@
                     <h5 class="card-title d-flex justify-content-between text-capitalize"><%=product.name%> </h5>
                     <p class="card-text"><%=product.desc%></p>
                     <h5 class="card-title"><i class="bi bi-currency-rupee"></i><%=product.price%> </h5>
+
                     <a href="#" class="btn btn-sm btn-primary">Buy Now</a>
                     <a href="#" class="btn btn-sm btn-warning">Edit</a>
                     <form action="#" class="d-inline-block" method="post">
@@ -39,7 +41,9 @@
                 </fieldset>
             </div>
             <div class="mb-3">
-                <textarea class="form-control " name="comment" id="comment" cols="15" rows="5"></textarea>
+
+                <textarea class="form-control" name="comment" id="comment" cols="15" rows="5"></textarea>
+
             </div>
             <button class="btn btn-sm btn-dark">Submit</button>
         </form>

@@ -8,6 +8,9 @@ const create = async (req, res) => {
     };
 
     await reviewService.create(productId, review);
+
+    req.flash('success', 'Added your review successfully');
+
     res.redirect(`/api/v1/products/${productId}`);
 };
 

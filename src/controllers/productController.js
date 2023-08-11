@@ -15,8 +15,13 @@ const create = async (req, res) => {
         rating: req.body.rating,
     };
 
-    const newProduct = await productService.create(product);
-    res.status(201).json(newProduct);
+
+    await productService.create(product);
+    res.redirect('/api/v1/products');
+};
+
+const showNewForm = (req, res) => {
+    res.render('products/showNewForm');
 };
 
 const findById = async (req, res) => {
@@ -29,4 +34,8 @@ module.exports = {
     getAllProducts,
     create,
     findById,
+
+
+    showNewForm,
+
 };
