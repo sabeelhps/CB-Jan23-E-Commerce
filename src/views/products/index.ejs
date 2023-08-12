@@ -3,17 +3,22 @@
 <h1>All Products</h1>
 <section class="row">
     <% for(const product of products){ %>
-        <div class="col-lg-3 col-md-6">
-            <div class="card mb-3" style="width: 20rem;">
-                <img src="<%=product.imageUrl%>" class="card-img-top" alt="<%=product.name%>">
+
+        <div class="col-lg-3 col-md-6 " >
+            <div class="card mb-3   card-hover" style="width: 20rem;">
+                <span class="heart-icon position-absolute top-0 end-0 me-1"> <i class="bi bi-heart-fill text-light link-danger"></i></span>
+                <img src="<%=product.imageUrl%>"  class="card-img-top border border-bottom-0" alt="<%=product.name%>"   >
                 <div class="card-body">
-                  <h5 class="card-title d-flex justify-content-between"><%=product.name%> <span class="me-2"><%=product.rating%><i class="bi bi-star-fill"></i></span></h5>
+                  <h5 class="card-title d-flex justify-content-between text-capitalize"><%=product.name%> <span style="height: 22px;  width: 50px;"  class="me-2 bg-success text-warning fs-6 text-center " ><%=product.rating%><i class="bi bi-star-fill"></i></span></h5>
                   <p class="card-text"><%=product.desc%></p>
-                  <h5 class="card-title"><%=product.price%></h5>
+                  <h5 class="card-title"> <i class="bi bi-currency-rupee"></i><%=product.price%></h5>
+
                   <a href="/api/v1/products/<%=product._id%>" class="btn btn-dark btn-sm">Show</a>
                 </div>
             </div>
         </div>
     <% } %>
+
 </section>
+
 

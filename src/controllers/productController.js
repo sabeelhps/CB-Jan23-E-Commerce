@@ -15,6 +15,7 @@ const create = async (req, res) => {
         rating: req.body.rating,
     };
 
+
     await productService.create(product);
     res.redirect('/api/v1/products');
 };
@@ -22,6 +23,7 @@ const create = async (req, res) => {
 const showNewForm = (req, res) => {
     res.render('products/showNewForm');
 };
+
 const findById = async (req, res) => {
     const { id } = req.params;
     const product = await productService.findById(id);
@@ -32,5 +34,8 @@ module.exports = {
     getAllProducts,
     create,
     findById,
+
+
     showNewForm,
+
 };
