@@ -10,7 +10,7 @@ const createUser = async (req, res) => {
 
     await userService.createUser(user, req.body.password);
 
-    return res.send('User Registered Successfully!');
+    return res.redirect('/api/v1/users/login');
 }
 
 const login = (req, res) => {

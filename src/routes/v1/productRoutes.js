@@ -1,14 +1,14 @@
 const express = require('express');
-
 const router = express.Router();
 const productController = require('../../controllers/productController');
 const catchAsync = require('../../core/catchAsync');
+const isLoggedIn = require('../../middleware/auth');
 
 router.get('/', catchAsync(productController.getAllProducts));
 
-router.post('/', catchAsync(productController.create));
+router.post('/', isLoggedIn , catchAsync(productController.create));
 
-router.get('/new', productController.showNewForm);
+router.get('/new', isLoggedIn, productController.showNewForm);
 
 router.get('/:id', catchAsync(productController.findById));
 
