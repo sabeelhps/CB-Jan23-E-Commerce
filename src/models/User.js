@@ -12,6 +12,13 @@ const userSchema = new mongoose.Schema({
 
 userSchema.plugin(passportLocalMongoose);
 
+userSchema.methods.isAuthor = function (productAuthorId) {
+    if (this.role == 'seller' && this._id.equals(productAuthorId)) {
+        return true;
+    }
+    return false;
+}
+
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
