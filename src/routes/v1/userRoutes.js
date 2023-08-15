@@ -5,6 +5,9 @@ const router = express.Router();
 const catchAsync = require('../../core/catchAsync');
 const passport = require('passport');
 
+// BASE PATH USED: /api/v1/users/
+
+// Get the register form
 router.get('/register', (req, res) => {
     res.render('users/register');
 });
