@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Logger = require('./core/Logger');
 const {
     dbUrl, minPoolSize, maxPoolSize, selectionTimout,
 } = require('./configs/database');
@@ -11,7 +12,7 @@ async function connect() {
             serverSelectionTimeoutMS: selectionTimout,
         });
     } catch (err) {
-        console.log(err);
+        Logger.error(err);
     }
 }
 
@@ -19,7 +20,7 @@ async function disconnect() {
     try {
         await mongoose.disconnect();
     } catch (err) {
-        console.log(err);
+        Logger.error(err);
     }
 }
 
