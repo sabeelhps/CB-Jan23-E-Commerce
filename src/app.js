@@ -3,12 +3,12 @@ const path = require('path');
 const ejsMate = require('ejs-mate');
 const session = require('express-session');
 const flash = require('connect-flash');
-const { secret } = require('./configs');
-const { healthcheckRoutes, v1Routes } = require('./routes');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
-const User = require('./models/User');
 const methodOverride = require('method-override');
+const { secret } = require('./configs');
+const { healthcheckRoutes, v1Routes } = require('./routes');
+const User = require('./models/User');
 
 const app = express();
 
@@ -27,7 +27,7 @@ const sessionConfig = {
         httpOnly: true,
         maxAge: 1000 * 60 * 60 * 24 * 7,
     },
-}
+};
 
 app.use(session(sessionConfig));
 app.use(flash());
@@ -48,6 +48,10 @@ app.use((req, res, next) => {
     res.locals.error = req.flash('error');
     res.locals.currentUser = req.user;
     next();
+});
+
+app.get('/', (req, res) => {
+    res.render('home');
 });
 
 app.use(healthcheckRoutes);

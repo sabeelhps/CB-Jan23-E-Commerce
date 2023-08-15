@@ -6,8 +6,8 @@ const userSchema = new mongoose.Schema({
     role: {
         type: String,
         default: 'buyer',
-        enum: ['admin', 'seller','buyer']
-    }
+        enum: ['admin', 'seller', 'buyer'],
+    },
 });
 
 userSchema.plugin(passportLocalMongoose);
@@ -17,7 +17,7 @@ userSchema.methods.isAuthor = function (productAuthorId) {
         return true;
     }
     return false;
-}
+};
 
 const User = mongoose.model('User', userSchema);
 

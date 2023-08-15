@@ -1,4 +1,4 @@
-const productRepo = require('../repositories/productRepo')
+const productRepo = require('../repositories/productRepo');
 
 const PRODUCT_AUTHOR_ROLES = ['seller', 'admin'];
 
@@ -8,7 +8,7 @@ const isLoggedIn = (req, res, next) => {
         return res.redirect('/api/v1/users/login');
     }
     return next();
-}
+};
 
 const isAdminOrSeller = (req, res, next) => {
     if (!req.isAuthenticated()) {
@@ -20,9 +20,9 @@ const isAdminOrSeller = (req, res, next) => {
         return res.redirect('/api/v1/users/login');
     }
     return next();
-}
+};
 
-const isProductAuthor = async(req, res, next) => {
+const isProductAuthor = async (req, res, next) => {
     const { id: productId } = req.params;
     if (!req.isAuthenticated()) {
         req.flash('error', 'Please login to continue');
@@ -39,10 +39,10 @@ const isProductAuthor = async(req, res, next) => {
         return res.redirect('/api/v1/users/login');
     }
     return next();
-}
+};
 
 module.exports = {
     isAdminOrSeller,
     isLoggedIn,
-    isProductAuthor
+    isProductAuthor,
 };

@@ -13,13 +13,11 @@ const findById = async (id) => {
     return product;
 };
 
-const deleteProduct = async (id) => {
-    return await productRepo.deleteProduct(id);
-}
+const deleteProduct = async (id) => await productRepo.deleteProduct(id);
 
 module.exports = {
     create,
     getAllProducts,
     findById,
-    deleteProduct
+    deleteProduct,
 };
