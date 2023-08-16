@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Logger = require('./core/Logger');
 const {
     dbUrl, minPoolSize, maxPoolSize, selectionTimout,
 } = require('./configs/database');
