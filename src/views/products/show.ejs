@@ -17,7 +17,9 @@
                             <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                         </form>
                     <% } %>
-                    <a href="#" class="btn btn-sm btn-secondary">Add To Cart</a>
+                    <form class="d-inline-block" action="/api/v1/users/cart/products/<%=product._id%>" method="post">
+                         <button href="#" class="btn btn-sm btn-secondary">Add To Cart</button>
+                    </form>
                 </div>
             </div>
         </div>

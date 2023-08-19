@@ -1,5 +1,6 @@
 const express = require('express');
 const userController = require('../../controllers/userController');
+const {isLoggedIn } = require('../../middleware/auth');
 
 const router = express.Router();
 const catchAsync = require('../../core/catchAsync');
@@ -40,5 +41,10 @@ router.get('/logout', (req, res, next) => {
         res.redirect('/api/v1/users/login');
     });
 });
+
+// /api/v1/users/cart/products/:productId
+router.post('/cart/products/:productId',isLoggedIn, catchAsync(userController.addToCart));
+
+router.get('/cart', isLoggedIn, userController.getUserCart);
 
 module.exports = router;

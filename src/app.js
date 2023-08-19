@@ -9,6 +9,8 @@ const methodOverride = require('method-override');
 const { secret } = require('./configs');
 const { healthcheckRoutes, v1Routes } = require('./routes');
 const User = require('./models/User');
+const MongoStore = require('connect-mongo');
+const { dbUrl } = require('./configs/database');
 
 const app = express();
 
@@ -18,7 +20,15 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 
+const store = MongoStore.create({
+    mongoUrl: dbUrl,
+    ttl: 14 * 24 * 60 * 60,
+    autoRemove: 'native',
+    touchAfter: 24 * 3600 // time period in seconds
+})
+
 const sessionConfig = {
+    store: store,
     secret,
     resave: false,
     saveUninitialized: true,
