@@ -15,6 +15,7 @@
           <h5 class="card-title">$<%=product.price%></h5>
           <a href="#" class="btn btn-sm btn-primary">Buy Now</a>
           <!-- The below condition can be written in a better way -->
+          <% if(currentUser && currentUser.isAuthor(product.author)) {%>
           <a href="#" class="btn btn-sm btn-warning">Edit</a>
           <form
             action="/api/v1/products/<%=product._id%>?_method=DELETE"
@@ -23,6 +24,7 @@
           >
             <button type="submit" class="btn btn-sm btn-danger">Delete</button>
           </form>
+          <% } %>
           <a href="#" class="btn btn-sm btn-secondary">Add To Cart</a>
         </div>
       </div>
