@@ -6,10 +6,10 @@ const flash = require('connect-flash');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const methodOverride = require('method-override');
+const MongoStore = require('connect-mongo');
 const { secret } = require('./configs');
 const { healthcheckRoutes, v1Routes } = require('./routes');
 const User = require('./models/User');
-const MongoStore = require('connect-mongo');
 const { dbUrl } = require('./configs/database');
 
 const app = express();
@@ -24,11 +24,11 @@ const store = MongoStore.create({
     mongoUrl: dbUrl,
     ttl: 14 * 24 * 60 * 60,
     autoRemove: 'native',
-    touchAfter: 24 * 3600 // time period in seconds
-})
+    touchAfter: 24 * 3600, // time period in seconds
+});
 
 const sessionConfig = {
-    store: store,
+    store,
     secret,
     resave: false,
     saveUninitialized: true,

@@ -6,7 +6,7 @@ const cartItemSchema = new mongoose.Schema({
     name: String,
     price: Number,
     qty: Number,
-    imageUrl: String
+    imageUrl: String,
 }, { _id: false });
 
 const userSchema = new mongoose.Schema({
@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
         default: 'buyer',
         enum: ['admin', 'seller', 'buyer'],
     },
-    cart: [cartItemSchema]
+    cart: [cartItemSchema],
 });
 
 userSchema.plugin(passportLocalMongoose);
