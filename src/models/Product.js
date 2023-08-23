@@ -28,13 +28,9 @@ productSchema.pre(
     'deleteOne',
     { document: true, query: false },
     async function (next) {
-        console.log(this instanceof Query);
-        Logger.info('inside pre hook');
+        Logger.info('inside deleteOne pre hook');
+        await Review.deleteMany({ _id: { $in: this.reviews } });
         next();
-    // Logger.info(`product being deleted: ${this}`);
-    // Logger.info(`refd review : ${this.reviews}`);
-    // await Review.deleteMany({ _id: { $in: this.reviews } });
-    // next();
     },
 );
 
