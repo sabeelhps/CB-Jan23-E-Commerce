@@ -9,10 +9,11 @@ const save = (product) => {
 
 const findById = (id) => Product.findById(id);
 
-const findByIdWithReviews = (id) => Product.findById(id)
-    .populate('reviews');
+const findByIdWithReviews = (id) => Product.findById(id).populate('reviews');
 
-const deleteProduct = (id) => Product.findByIdAndDelete(id);
+const deleteProduct = (id) => {
+    findById(id).then((doc) => doc.deleteOne());
+};
 
 module.exports = {
     save,

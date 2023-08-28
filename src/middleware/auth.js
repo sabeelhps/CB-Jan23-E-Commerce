@@ -1,4 +1,5 @@
 const productRepo = require('../repositories/productRepo');
+const Logger = require('../core/Logger');
 
 const PRODUCT_AUTHOR_ROLES = ['seller', 'admin'];
 
@@ -23,6 +24,7 @@ const isAdminOrSeller = (req, res, next) => {
 };
 
 const isProductAuthor = async (req, res, next) => {
+    Logger.info('Inside isProductAuthor');
     const { id: productId } = req.params;
     if (!req.isAuthenticated()) {
         req.flash('error', 'Please login to continue');
