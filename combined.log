@@ -91,3 +91,14 @@
 {"level":"info","message":"Server started at port :::: 8080 "}
 {"level":"info","message":"Entry in show product"}
 >>>>>>> env/sbox
+{"level":"info","message":"DB Connection Open!"}
+{"level":"info","message":"Server started at port :::: 8080 "}
+{"level":"info","message":"Entry in register user"}
+{"level":"info","message":"Entry in register user"}
+{"level":"info","message":"Entry in create product"}
+{"level":"info","message":"Entry in create product"}
+{"level":"info","message":"Entry in create product"}
+{"level":"info","message":"DB Connection Open!"}
+{"level":"info","message":"Server started at port :::: 8080 "}
+{"level":"info","message":"Entry in create product"}
+{"level":"info","message":"Entry in create product"}
