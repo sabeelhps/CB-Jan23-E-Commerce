@@ -1,6 +1,6 @@
 <% layout('layout/boilerplate') -%>
 <h1>Add your new Product here..</h1>
-<form action="/api/v1/products" method="POST">
+<form action="/api/v1/products" method="POST" enctype="multipart/form-data">
   <div class="mb-3">
     <label for="imageUrl" class="form-label">Upload Product Image</label>
     <input class="form-control" type="file" name="imageUrl" id="imageUrl" />
