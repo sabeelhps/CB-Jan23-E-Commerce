@@ -16,7 +16,11 @@
           <a href="#" class="btn btn-sm btn-primary">Buy Now</a>
           <!-- The below condition can be written in a better way -->
           <% if(currentUser && currentUser.isAuthor(product.author)) {%>
-          <a href="#" class="btn btn-sm btn-warning">Edit</a>
+          <a
+            href="/api/v1/products/<%= product._id %>/form"
+            class="btn btn-sm btn-warning"
+            >Edit</a
+          >
           <form
             action="/api/v1/products/<%=product._id%>?_method=DELETE"
             class="d-inline-block"
