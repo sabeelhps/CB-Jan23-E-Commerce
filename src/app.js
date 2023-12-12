@@ -11,7 +11,6 @@ const { secret } = require("./configs");
 const { healthcheckRoutes, v1Routes } = require("./routes");
 const User = require("./models/User");
 const { dbUrl } = require("./configs/database");
-const imageUpload = require("./middleware/upload");
 
 const app = express();
 
@@ -46,8 +45,6 @@ app.use(express.json({ limit: "10mb" }));
 app.use(
   express.urlencoded({ limit: "10mb", extended: true, parameterLimit: 5000 })
 );
-// middleware to process multipart/form-data requests
-app.use(imageUpload);
 
 // Passport configurations with express
 passport.use(new LocalStrategy(User.authenticate()));

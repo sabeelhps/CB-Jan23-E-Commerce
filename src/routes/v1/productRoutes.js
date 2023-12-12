@@ -4,6 +4,7 @@ const router = express.Router();
 const productController = require("../../controllers/productController");
 const catchAsync = require("../../core/catchAsync");
 const { isAdminOrSeller, isProductAuthor } = require("../../middleware/auth");
+const uploadImage = require("../../middleware/upload");
 
 router.get("/", catchAsync(productController.getAllProducts));
 
@@ -13,9 +14,14 @@ router.get("/:id/form", isAdminOrSeller, productController.showEditProductForm);
 
 router.get("/:id", catchAsync(productController.findById));
 
-router.post("/", isAdminOrSeller, catchAsync(productController.create));
+router.post(
+  "/",
+  isAdminOrSeller,
+  uploadImage,
+  catchAsync(productController.create)
+);
 
-router.put("/:id", isProductAuthor, productController.edit);
+router.put("/:id", isProductAuthor, uploadImage, productController.edit);
 
 router.delete(
   "/:id",
