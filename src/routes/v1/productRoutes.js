@@ -1,18 +1,28 @@
-const express = require('express');
+const express = require("express");
+const uploadImage = require("../../middleware/upload");
 
 const router = express.Router();
-const productController = require('../../controllers/productController');
-const catchAsync = require('../../core/catchAsync');
-const { isAdminOrSeller, isProductAuthor } = require('../../middleware/auth');
+const productController = require("../../controllers/productController");
+const catchAsync = require("../../core/catchAsync");
+const { isAdminOrSeller, isProductAuthor } = require("../../middleware/auth");
 
-router.get('/', catchAsync(productController.getAllProducts));
+router.get("/", catchAsync(productController.getAllProducts));
 
-router.get('/new', isAdminOrSeller, productController.showNewForm);
+router.get("/new", isAdminOrSeller, productController.showNewForm);
 
-router.post('/', isAdminOrSeller, catchAsync(productController.create));
+router.post(
+  "/",
+  isAdminOrSeller,
+  uploadImage,
+  catchAsync(productController.create)
+);
 
-router.get('/:id', catchAsync(productController.findById));
+router.get("/:id", catchAsync(productController.findById));
 
-router.delete('/:id', isProductAuthor, catchAsync(productController.deleteProduct));
+router.delete(
+  "/:id",
+  isProductAuthor,
+  catchAsync(productController.deleteProduct)
+);
 
 module.exports = router;
