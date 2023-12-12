@@ -25,9 +25,7 @@ const cloudinaryStorage = new CloudinaryStorage({
 
 // pass and use the storage layer in multer.
 // create a middleware instance from multer constuctor
-const uploadMiddleware = multer({ storage: cloudinaryStorage }).single(
-  "imageUrl"
-);
+const uploadImage = multer({ storage: cloudinaryStorage }).single("imageUrl");
 
 // export the middleware which uploads and stores the images in cloudinary
 
