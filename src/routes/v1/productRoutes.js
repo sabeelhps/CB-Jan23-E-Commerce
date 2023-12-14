@@ -10,7 +10,11 @@ router.get("/", catchAsync(productController.getAllProducts));
 
 router.get("/new", isAdminOrSeller, productController.showAddProductForm);
 
-router.get("/:id/edit", isAdminOrSeller, productController.showEditProductForm);
+router.get(
+  "/:id/edit",
+  isAdminOrSeller,
+  catchAsync(productController.showEditProductForm)
+);
 
 router.get("/:id", catchAsync(productController.findById));
 
@@ -21,7 +25,12 @@ router.post(
   catchAsync(productController.create)
 );
 
-router.put("/:id", isProductAuthor, uploadImage, productController.editProduct);
+router.put(
+  "/:id",
+  isProductAuthor,
+  uploadImage,
+  catchAsync(productController.editProduct)
+);
 
 router.delete(
   "/:id",

@@ -24,44 +24,33 @@ const create = async (req, res) => {
 
 const editProduct = async (req, res) => {
   const productId = req.params.id;
-  productService
-    .findById(productId)
-    .then((prod) => {
-      prod.name = req.body.name;
-      prod.desc = req.body.desc;
-      if (req.file) {
-        // user has uploaded a new picture for the product
-        prod.imageUrl = req.file.path;
-      }
-      prod.price = req.body.price;
-      prod.quantity = req.body.quantity;
-      prod.rating = req.body.rating;
+  const prod = await productService.findById(productId);
+  prod.name = req.body.name;
+  prod.desc = req.body.desc;
+  if (req.file) {
+    // user has uploaded a new picture for the product
+    prod.imageUrl = req.file.path;
+  }
+  prod.price = req.body.price;
+  prod.quantity = req.body.quantity;
+  prod.rating = req.body.rating;
 
-      return prod.save();
-    })
-    .then(() => res.redirect(`/api/v1/products/${productId}`))
-    .catch((err) => console.error(err));
+  await prod.save();
+  res.redirect(`/api/v1/products/${productId}`);
 };
 
 const showAddProductForm = (req, res) => {
   res.render("products/productForm", { title: "Add Product", editing: false });
 };
 
-const showEditProductForm = (req, res) => {
+const showEditProductForm = async (req, res) => {
   const productId = req.params.id;
-  productService
-    .findById(productId)
-    .then((prod) => {
-      console.log(prod); // TODO : Remove console log
-      res.render("products/productForm", {
-        title: "Edit Product",
-        editing: true,
-        product: prod,
-      });
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+  const prod = await productService.findById(productId);
+  res.render("products/productForm", {
+    title: "Edit Product",
+    editing: true,
+    product: prod,
+  });
 };
 
 const findById = async (req, res) => {
