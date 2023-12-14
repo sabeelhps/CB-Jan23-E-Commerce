@@ -24,18 +24,12 @@ const create = async (req, res) => {
 
 const editProduct = async (req, res) => {
   const productId = req.params.id;
-  const prod = await productService.findById(productId);
-  prod.name = req.body.name;
-  prod.desc = req.body.desc;
+  const patchObj = req.body;
   if (req.file) {
     // user has uploaded a new picture for the product
-    prod.imageUrl = req.file.path;
+    patchObj.imageUrl = req.file.path;
   }
-  prod.price = req.body.price;
-  prod.quantity = req.body.quantity;
-  prod.rating = req.body.rating;
-
-  await prod.save();
+  productService.updateProduct(productId, patchObj);
   res.redirect(`/api/v1/products/${productId}`);
 };
 

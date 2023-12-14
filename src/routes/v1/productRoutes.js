@@ -25,7 +25,7 @@ router.post(
   catchAsync(productController.create)
 );
 
-router.put(
+router.patch(
   "/:id",
   isProductAuthor,
   uploadImage,

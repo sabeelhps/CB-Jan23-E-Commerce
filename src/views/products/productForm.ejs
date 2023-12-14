@@ -1,7 +1,7 @@
 <% layout('layout/boilerplate') -%>
 <h1><%= title %></h1>
 <form
-  action="<% if(!editing){%>/api/v1/products<%}else{%>/api/v1/products/<%=product._id%>?_method=PUT<%}%>"
+  action="<% if(!editing){%>/api/v1/products<%}else{%>/api/v1/products/<%=product._id%>?_method=PATCH<%}%>"
   method="post"
   enctype="multipart/form-data"
 >
