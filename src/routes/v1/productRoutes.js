@@ -8,9 +8,9 @@ const uploadImage = require("../../middleware/upload");
 
 router.get("/", catchAsync(productController.getAllProducts));
 
-router.get("/form", isAdminOrSeller, productController.showAddProductForm);
+router.get("/new", isAdminOrSeller, productController.showAddProductForm);
 
-router.get("/:id/form", isAdminOrSeller, productController.showEditProductForm);
+router.get("/:id/edit", isAdminOrSeller, productController.showEditProductForm);
 
 router.get("/:id", catchAsync(productController.findById));
 
