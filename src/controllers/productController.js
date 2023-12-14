@@ -22,7 +22,7 @@ const create = async (req, res) => {
   res.redirect("/api/v1/products");
 };
 
-const edit = async (req, res) => {
+const editProduct = async (req, res) => {
   const productId = req.params.id;
   productService
     .findById(productId)
