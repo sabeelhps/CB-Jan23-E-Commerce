@@ -21,7 +21,7 @@ router.post(
   catchAsync(productController.create)
 );
 
-router.put("/:id", isProductAuthor, uploadImage, productController.edit);
+router.put("/:id", isProductAuthor, uploadImage, productController.editProduct);
 
 router.delete(
   "/:id",

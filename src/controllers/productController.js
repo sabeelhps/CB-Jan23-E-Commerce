@@ -82,7 +82,7 @@ const deleteProduct = async (req, res) => {
 module.exports = {
   getAllProducts,
   create,
-  edit,
+  editProduct,
   findById,
   showAddProductForm,
   showEditProductForm,
