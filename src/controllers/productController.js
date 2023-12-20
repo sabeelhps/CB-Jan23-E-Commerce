@@ -39,11 +39,11 @@ const showAddProductForm = (req, res) => {
 
 const showEditProductForm = async (req, res) => {
   const productId = req.params.id;
-  const prod = await productService.findById(productId);
+  const product = await productService.findById(productId);
   res.render("products/productForm", {
     title: "Edit Product",
     editing: true,
-    product: prod,
+    product: product,
   });
 };
 
