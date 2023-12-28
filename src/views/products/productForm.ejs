@@ -1,0 +1,80 @@
+<% layout('layout/boilerplate') -%>
+<h1><%= title %></h1>
+<form
+  action="<% if(!editing){%>/api/v1/products<%}else{%>/api/v1/products/<%=product._id%>?_method=PATCH<%}%>"
+  method="post"
+  enctype="multipart/form-data"
+>
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      name="name"
+      id="name"
+      placeholder="<%if(!editing){%>Name<%}%>"
+      value="<%if(editing){%><%=product.desc%><%}%>"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="imageUrl" class="form-label">Upload Product Image</label>
+    <input class="form-control" type="file" name="imageUrl" id="imageUrl" />
+  </div>
+  <div class="mb-3">
+    <label for="desc" class="form-label">Description</label>
+    <textarea
+      class="form-control"
+      name="desc"
+      id="desc"
+      rows="3"
+      placeholder="<%if(!editing){%>Description of the product<%}%>"
+    >
+<%if(editing){%><%=product.desc%><%}%></textarea
+    >
+  </div>
+  <div class="mb-3">
+    <label for="price" class="form-label">Price</label>
+    <input
+      type="text"
+      class="form-control"
+      name="price"
+      id="price"
+      placeholder="<%if(!editing){%>Price<%}%>"
+      value="<%if(editing){%><%=product.price%><%}%>"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="rating" class="form-label">Rating</label>
+    <input
+      type="number"
+      min="1"
+      max="5"
+      class="form-control"
+      name="rating"
+      id="rating"
+      placeholder="<%if(!editing){%>Rating<%}%>"
+      value="<%if(editing){%><%=product.rating%><%}%>"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="quantity" class="form-label">Quantity</label>
+    <input
+      type="number"
+      class="form-control"
+      name="quantity"
+      id="quantity"
+      placeholder="<%if(!editing){%>Quantity<%}%>"
+      value="<%if(editing){%><%=product.quantity%><%}%>"
+    />
+  </div>
+  <%if(editing) {%>
+  <div class="mb-3">
+    <input type="hidden" name="id" value="<%= product._id%>" />
+  </div>
+  <% }%>
+  <div class="col-auto">
+    <button type="submit" class="btn btn-primary mb-3">
+      <%if(editing){%>Edit Product<%}else{%>Add Product<%}%>
+    </button>
+  </div>
+</form>
