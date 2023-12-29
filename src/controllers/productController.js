@@ -22,9 +22,31 @@ const create = async (req, res) => {
   res.redirect("/api/v1/products");
 };
 
-const showNewForm = (req, res) => {
-  res.render("products/showNewForm");
+const editProduct = async (req, res) => {
+  const productId = req.params.id;
+  const patchObj = req.body;
+  if (req.file) {
+    // user has uploaded a new picture for the product
+    patchObj.imageUrl = req.file.path;
+  }
+  productService.updateProduct(productId, patchObj);
+  res.redirect(`/api/v1/products/${productId}`);
 };
+
+const showAddProductForm = (req, res) => {
+  res.render("products/productForm", { title: "Add Product", editing: false });
+};
+
+const showEditProductForm = async (req, res) => {
+  const productId = req.params.id;
+  const product = await productService.findById(productId);
+  res.render("products/productForm", {
+    title: "Edit Product",
+    editing: true,
+    product: product,
+  });
+};
+
 const findById = async (req, res) => {
   Logger.info("Entry in show product");
   const { id } = req.params;
@@ -43,7 +65,9 @@ const deleteProduct = async (req, res) => {
 module.exports = {
   getAllProducts,
   create,
+  editProduct,
   findById,
-  showNewForm,
+  showAddProductForm,
+  showEditProductForm,
   deleteProduct,
 };
