@@ -1,11 +1,14 @@
 const Product = require("../models/Product");
 
-const getAllProducts = () => Product.find({});
+const getAllProducts = (offset, lim) =>
+  Product.find({}).skip(offset).limit(lim);
 
 const save = (product) => {
   const newProduct = new Product(product);
   return newProduct.save();
 };
+
+const count = () => Product.count();
 
 const findById = (id) => Product.findById(id);
 
@@ -21,6 +24,7 @@ const patchProduct = (id, patchObj) =>
 module.exports = {
   save,
   getAllProducts,
+  count,
   findById,
   findByIdWithReviews,
   deleteProduct,

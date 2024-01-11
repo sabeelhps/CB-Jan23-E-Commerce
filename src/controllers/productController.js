@@ -2,8 +2,18 @@ const productService = require("../services/productService");
 const Logger = require("../core/Logger");
 
 const getAllProducts = async (req, res) => {
-  const products = await productService.getAllProducts();
-  res.render("products/index", { products });
+  const currPage = +req.query.pageNum;
+  const pageSize = +req.query.pageSize;
+  let totalProducts = await productService.count();
+  const products = await productService.getAllProducts(currPage, pageSize);
+  res.render("products/index", {
+    products: products,
+    currPage: currPage,
+    pageSize: pageSize,
+    totalProducts: totalProducts,
+    hasNext: currPage * pageSize < totalProducts,
+    hasPrevious: currPage != 1,
+  });
 };
 
 const create = async (req, res) => {
